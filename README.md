@@ -1,3 +1,5 @@
+[![CI](https://github.com/AlexBuQA/GybridSys/actions/workflows/ci.yml/badge.svg)](https://github.com/AlexBuQA/GybridSys/actions/workflows/ci.yml)
+
 # Гибридная система рекомендаций книг с Two-Tower
 
 **Итоговый проект · Goodbooks-10k**  
