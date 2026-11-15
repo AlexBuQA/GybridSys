@@ -1,0 +1,25 @@
+{
+  "seed": 42,
+  "k": 10,
+  "evaluated_users": 600,
+  "relevance_threshold": 4,
+  "same_test_users_for_all_variants": true,
+  "full_model_reused_from_hybrid": true,
+  "masking": "zero standardized features (train mean); dimensions and initialization preserved",
+  "models": [
+    "Two-Tower ID only",
+    "Two-Tower + user features",
+    "Two-Tower + item features",
+    "Two-Tower full features"
+  ],
+  "parameters": {
+    "embedding_dim": 16,
+    "output_dim": 32,
+    "epochs": 4,
+    "batch_size": 2048,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-06,
+    "positive_interactions": 504197
+  },
+  "note": "Analytical ablation only; hybrid weights are not retuned on these test results."
+}

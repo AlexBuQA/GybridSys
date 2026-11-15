@@ -1,0 +1,8 @@
+{
+  "status": "success",
+  "elapsed_seconds": 219.23622730001807,
+  "best_model_by_ndcg": "Content-Based",
+  "best_ndcg_at_k": 0.140429408640086,
+  "hybrid_lambda": 0.7,
+  "evaluated_users": 600
+}

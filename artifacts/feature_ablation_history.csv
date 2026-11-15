@@ -1,0 +1,17 @@
+model,epoch,train_bpr_loss,train_bpr_accuracy
+Two-Tower ID only,1,0.69297313,0.50565201
+Two-Tower ID only,2,0.67280614,0.57444816
+Two-Tower ID only,3,0.54701220,0.70603583
+Two-Tower ID only,4,0.43216720,0.78797563
+Two-Tower + user features,1,0.64970413,0.59518907
+Two-Tower + user features,2,0.52983387,0.71683861
+Two-Tower + user features,3,0.43378611,0.78527578
+Two-Tower + user features,4,0.37237617,0.82091269
+Two-Tower + item features,1,0.60591083,0.65694973
+Two-Tower + item features,2,0.38205903,0.82464190
+Two-Tower + item features,3,0.28420245,0.87599755
+Two-Tower + item features,4,0.23620733,0.89890194
+Two-Tower full features,1,0.61716142,0.67665204
+Two-Tower full features,2,0.38951811,0.82388611
+Two-Tower full features,3,0.29752083,0.87000653
+Two-Tower full features,4,0.25250990,0.89142143

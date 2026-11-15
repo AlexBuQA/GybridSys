@@ -1,0 +1,215 @@
+{
+  "user_id": 6630,
+  "recommendations": [
+    {
+      "rank": 1,
+      "book_id": 243,
+      "hybrid_score": 0.5008801817893982,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 0.0,
+      "content_score": 0.23235328495502472,
+      "item_cf_score": 0.0,
+      "svd_score": 0.0,
+      "two_tower_score": 6.518773078918457,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "Misery",
+      "authors": "Stephen King"
+    },
+    {
+      "rank": 2,
+      "book_id": 209,
+      "hybrid_score": 0.43945369124412537,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 0.0,
+      "content_score": 0.22269898653030396,
+      "item_cf_score": 0.0,
+      "svd_score": 0.0,
+      "two_tower_score": 6.829802513122559,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "The Silence of the Lambs  (Hannibal Lecter, #2)",
+      "authors": "Thomas Harris"
+    },
+    {
+      "rank": 3,
+      "book_id": 2352,
+      "hybrid_score": 0.3693992793560028,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 0.0,
+      "content_score": 0.22093839943408966,
+      "item_cf_score": 0.0,
+      "svd_score": 0.0,
+      "two_tower_score": 0.0,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "The Regulators",
+      "authors": "Richard Bachman, Stephen King"
+    },
+    {
+      "rank": 4,
+      "book_id": 6361,
+      "hybrid_score": 0.21556076407432556,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 4.866666793823242,
+      "content_score": 0.0,
+      "item_cf_score": 0.0,
+      "svd_score": 4.316092014312744,
+      "two_tower_score": 0.0,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "There's Treasure Everywhere: A Calvin and Hobbes Collection",
+      "authors": "Bill Watterson"
+    },
+    {
+      "rank": 5,
+      "book_id": 7927,
+      "hybrid_score": 0.21934489905834198,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 0.0,
+      "content_score": 0.2042197585105896,
+      "item_cf_score": 0.0,
+      "svd_score": 0.0,
+      "two_tower_score": 0.0,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "The Akhenaten Adventure (Children of the Lamp, #1)",
+      "authors": "P.B. Kerr"
+    },
+    {
+      "rank": 6,
+      "book_id": 201,
+      "hybrid_score": 0.27243587374687195,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 0.0,
+      "content_score": 0.20435106754302979,
+      "item_cf_score": 0.0,
+      "svd_score": 0.0,
+      "two_tower_score": 6.800945281982422,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "The Lost Symbol (Robert Langdon, #3)",
+      "authors": "Dan Brown"
+    },
+    {
+      "rank": 7,
+      "book_id": 3177,
+      "hybrid_score": 0.22673331201076508,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 0.0,
+      "content_score": 0.0,
+      "item_cf_score": 5.000000476837158,
+      "svd_score": 0.0,
+      "two_tower_score": 0.0,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "The Realms of the Gods (Immortals, #4)",
+      "authors": "Tamora Pierce"
+    },
+    {
+      "rank": 8,
+      "book_id": 7947,
+      "hybrid_score": 0.19249723851680756,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 4.830769062042236,
+      "content_score": 0.0,
+      "item_cf_score": 0.0,
+      "svd_score": 4.318830966949463,
+      "two_tower_score": 0.0,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "ESV Study Bible",
+      "authors": "Anonymous, Lane T. Dennis, Wayne A. Grudem"
+    },
+    {
+      "rank": 9,
+      "book_id": 944,
+      "hybrid_score": 0.2647493779659271,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 0.0,
+      "content_score": 0.20927859842777252,
+      "item_cf_score": 0.0,
+      "svd_score": 0.0,
+      "two_tower_score": 0.0,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "Desperation",
+      "authors": "Stephen King"
+    },
+    {
+      "rank": 10,
+      "book_id": 4067,
+      "hybrid_score": 0.20758403837680817,
+      "segment": "active",
+      "diversity_lambda": 0.7,
+      "popularity_score": 0.0,
+      "content_score": 0.20290939509868622,
+      "item_cf_score": 0.0,
+      "svd_score": 0.0,
+      "two_tower_score": 0.0,
+      "applied_weights": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      },
+      "title": "The Eight (The Eight #1)",
+      "authors": "Katherine Neville"
+    }
+  ]
+}

@@ -1,0 +1,466 @@
+{
+  "project": "hybrid-book-recommender",
+  "version": "2.0.0",
+  "author": "Александра Бужор",
+  "seed": 42,
+  "data": {
+    "dataset": "Goodbooks-10k",
+    "n_users": 53424,
+    "n_items": 10000,
+    "raw_ratings": 981756,
+    "clean_ratings": 979478,
+    "duplicates_removed": 2278,
+    "users": 53424,
+    "rated_books": 10000
+  },
+  "split": {
+    "method": "random per-user train/holdout, then per-user validation/test",
+    "train_rows": 761605,
+    "validation_rows": 104958,
+    "test_rows": 112915,
+    "temporal": false
+  },
+  "features": {
+    "user": [
+      "log_rating_count",
+      "mean_rating",
+      "rating_std",
+      "positive_ratio",
+      "negative_ratio",
+      "rating_entropy",
+      "activity_score"
+    ],
+    "book": [
+      "log_rating_count",
+      "bayesian_mean",
+      "rating_std",
+      "positive_ratio",
+      "rating_entropy",
+      "popularity_score",
+      "global_log_ratings_count",
+      "publication_year",
+      "topic_fiction",
+      "topic_fantasy",
+      "topic_science_fiction",
+      "topic_romance",
+      "topic_mystery",
+      "topic_history",
+      "topic_children",
+      "topic_young_adult",
+      "topic_nonfiction",
+      "topic_comics"
+    ],
+    "scaler": {
+      "user_mean": [
+        2.10624361038208,
+        3.8765347003936768,
+        0.6376194357872009,
+        0.6722325682640076,
+        0.0837380588054657,
+        0.43699249625205994,
+        0.41450032591819763
+      ],
+      "user_std": [
+        1.0690196752548218,
+        0.6865377426147461,
+        0.4533928334712982,
+        0.308072954416275,
+        0.17314796149730682,
+        0.29055073857307434,
+        0.21037879586219788
+      ],
+      "book_mean": [
+        4.340263366699219,
+        3.856078624725342,
+        0.9336449503898621,
+        0.6623652577400208,
+        0.7749619483947754,
+        0.9575659036636353,
+        10.18535041809082,
+        1982.0340576171875,
+        0.3523930311203003,
+        0.10942180454730988,
+        0.0351751483976841,
+        0.09310765564441681,
+        0.10717436671257019,
+        0.07407933473587036,
+        0.053009942173957825,
+        0.05993100628256798,
+        0.09019877761602402,
+        0.02431519329547882
+      ],
+      "book_std": [
+        0.11396290361881256,
+        0.24219785630702972,
+        0.12596853077411652,
+        0.1303815096616745,
+        0.08246096223592758,
+        0.02514294907450676,
+        0.9368253946304321,
+        152.4120635986328,
+        0.26602283120155334,
+        0.2106797844171524,
+        0.0916624516248703,
+        0.20994913578033447,
+        0.23301739990711212,
+        0.1393226534128189,
+        0.17864586412906647,
+        0.13087953627109528,
+        0.17909862101078033,
+        0.11906120926141739
+      ],
+      "user_columns": [
+        "log_rating_count",
+        "mean_rating",
+        "rating_std",
+        "positive_ratio",
+        "negative_ratio",
+        "rating_entropy",
+        "activity_score"
+      ],
+      "book_columns": [
+        "log_rating_count",
+        "bayesian_mean",
+        "rating_std",
+        "positive_ratio",
+        "rating_entropy",
+        "popularity_score",
+        "global_log_ratings_count",
+        "publication_year",
+        "topic_fiction",
+        "topic_fantasy",
+        "topic_science_fiction",
+        "topic_romance",
+        "topic_mystery",
+        "topic_history",
+        "topic_children",
+        "topic_young_adult",
+        "topic_nonfiction",
+        "topic_comics"
+      ]
+    }
+  },
+  "models": {
+    "popularity": {
+      "min_ratings": 50
+    },
+    "content": {
+      "vectorizer": "TF-IDF",
+      "max_features": 30000,
+      "max_tags_per_book": 30
+    },
+    "item_cf": {
+      "similarity": "cosine",
+      "n_neighbors": 50
+    },
+    "svd": {
+      "library": "scikit-learn TruncatedSVD",
+      "n_factors": 32,
+      "n_iter": 7,
+      "shrinkage": 10.0,
+      "seed": 42,
+      "explained_variance_ratio_sum": 0.022345615550875664
+    },
+    "two_tower": {
+      "architecture": "Two-Tower: trainable ID embeddings + dense/tanh feature projection",
+      "objective": "Bayesian Personalized Ranking (BPR)",
+      "optimizer": "Adam",
+      "embedding_dim": 16,
+      "output_dim": 32,
+      "epochs": 4,
+      "batch_size": 2048,
+      "learning_rate": 0.001,
+      "weight_decay": 1e-06,
+      "seed": 42,
+      "positive_interactions": 504197
+    }
+  },
+  "hybrid": {
+    "candidate_limit": 60,
+    "weights": {
+      "cold_start": {
+        "popularity": 1.0,
+        "content": 0.0,
+        "item_cf": 0.0,
+        "svd": 0.0,
+        "two_tower": 0.0
+      },
+      "new": {
+        "popularity": 0.2,
+        "content": 0.5,
+        "item_cf": 0.05,
+        "svd": 0.1,
+        "two_tower": 0.15
+      },
+      "warm": {
+        "popularity": 0.0,
+        "content": 1.0,
+        "item_cf": 0.0,
+        "svd": 0.0,
+        "two_tower": 0.0
+      },
+      "active": {
+        "popularity": 0.19623148824845016,
+        "content": 0.47185099417062465,
+        "item_cf": 0.2267333079372811,
+        "svd": 0.025095868135895618,
+        "two_tower": 0.08008834150774867
+      }
+    },
+    "diversity_lambda": 0.7,
+    "weight_optimization": "validation nDCG@K; default + Dirichlet + one-hot",
+    "diversity_optimization": "validation nDCG@K + 0.20*ILD@K (coefficient fixed a priori)",
+    "reused_classical_artifacts": true
+  },
+  "evaluation": {
+    "k": 10,
+    "users": 600,
+    "relevance_threshold": 4,
+    "aggregation": "macro average over identical users",
+    "candidate_catalog": "full catalog; train items excluded"
+  },
+  "eda": {
+    "raw_ratings": 981756,
+    "clean_ratings": 979478,
+    "duplicates_removed": 2278,
+    "users": 53424,
+    "rated_books": 10000,
+    "books_in_catalog": 10000,
+    "sparsity": 0.9981665955375861,
+    "sparsity_percent": 99.81665955375861,
+    "mean_rating": 3.8560896722539963,
+    "median_rating": 4.0,
+    "share_ratings_ge_4_percent": 66.22456042912653,
+    "rating_distribution": {
+      "1": 19529,
+      "2": 63124,
+      "3": 248170,
+      "4": 356607,
+      "5": 292048
+    },
+    "user_activity_quantiles": {
+      "0.0": 1.0,
+      "0.25": 3.0,
+      "0.5": 8.0,
+      "0.75": 22.0,
+      "0.9": 47.0,
+      "0.95": 70.0,
+      "0.99": 134.0,
+      "1.0": 200.0
+    },
+    "book_popularity_quantiles": {
+      "0.0": 8.0,
+      "0.25": 99.0,
+      "0.5": 100.0,
+      "0.75": 100.0,
+      "0.9": 100.0,
+      "0.95": 100.0,
+      "0.99": 100.0,
+      "1.0": 100.0
+    },
+    "goodreads_popularity_quantiles": {
+      "0.0": 2716.0,
+      "0.25": 13568.75,
+      "0.5": 21155.5,
+      "0.75": 41053.5,
+      "0.9": 94103.10000000003,
+      "0.95": 170454.89999999997,
+      "0.99": 556559.9700000009,
+      "1.0": 4780653.0
+    },
+    "books_with_100_ratings_in_sample": 6248,
+    "books_with_100_ratings_in_sample_percent": 62.480000000000004,
+    "active_users_at_or_above_p99": 544,
+    "users_with_at_most_2_ratings": 8353,
+    "books_with_at_most_5_ratings": 0,
+    "top_tags": [
+      {
+        "tag": "to-read",
+        "count": 140718761
+      },
+      {
+        "tag": "currently-reading",
+        "count": 7507958
+      },
+      {
+        "tag": "favorites",
+        "count": 4503173
+      },
+      {
+        "tag": "fiction",
+        "count": 3688819
+      },
+      {
+        "tag": "fantasy",
+        "count": 3548157
+      },
+      {
+        "tag": "young-adult",
+        "count": 1848306
+      },
+      {
+        "tag": "classics",
+        "count": 1756920
+      },
+      {
+        "tag": "books-i-own",
+        "count": 1317235
+      },
+      {
+        "tag": "romance",
+        "count": 1231926
+      },
+      {
+        "tag": "owned",
+        "count": 1224279
+      },
+      {
+        "tag": "ya",
+        "count": 898334
+      },
+      {
+        "tag": "mystery",
+        "count": 872282
+      },
+      {
+        "tag": "non-fiction",
+        "count": 857901
+      },
+      {
+        "tag": "historical-fiction",
+        "count": 815421
+      },
+      {
+        "tag": "series",
+        "count": 782637
+      },
+      {
+        "tag": "science-fiction",
+        "count": 703866
+      },
+      {
+        "tag": "sci-fi",
+        "count": 597325
+      },
+      {
+        "tag": "paranormal",
+        "count": 542559
+      },
+      {
+        "tag": "kindle",
+        "count": 506882
+      },
+      {
+        "tag": "contemporary",
+        "count": 486001
+      }
+    ],
+    "top_books": [
+      {
+        "book_id": 1,
+        "title": "The Hunger Games",
+        "authors": "Suzanne Collins",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 4780653
+      },
+      {
+        "book_id": 2,
+        "title": "Harry Potter and the Philosopher's Stone",
+        "authors": "J.K. Rowling, Mary GrandPré",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 4602479
+      },
+      {
+        "book_id": 3,
+        "title": "Twilight",
+        "authors": "Stephenie Meyer",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 3866839
+      },
+      {
+        "book_id": 4,
+        "title": "To Kill a Mockingbird",
+        "authors": "Harper Lee",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 3198671
+      },
+      {
+        "book_id": 5,
+        "title": "The Great Gatsby",
+        "authors": "F. Scott Fitzgerald",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 2683664
+      },
+      {
+        "book_id": 6,
+        "title": "The Fault in Our Stars",
+        "authors": "John Green",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 2346404
+      },
+      {
+        "book_id": 7,
+        "title": "The Hobbit or There and Back Again",
+        "authors": "J.R.R. Tolkien",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 2071616
+      },
+      {
+        "book_id": 8,
+        "title": "The Catcher in the Rye",
+        "authors": "J.D. Salinger",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 2044241
+      },
+      {
+        "book_id": 10,
+        "title": "Pride and Prejudice",
+        "authors": "Jane Austen",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 2035490
+      },
+      {
+        "book_id": 9,
+        "title": "Angels & Demons ",
+        "authors": "Dan Brown",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 2001311
+      },
+      {
+        "book_id": 15,
+        "title": "Het Achterhuis: Dagboekbrieven 14 juni 1942 - 1 ",
+        "authors": "Anne Frank, Eleanor Roosevelt, B.M. Mooyaart-Doubleday",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 1972666
+      },
+      {
+        "book_id": 13,
+        "title": "Nineteen Eighty-Four",
+        "authors": "George Orwell, Erich Fromm, Celâl Üster",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 1956832
+      },
+      {
+        "book_id": 12,
+        "title": "Divergent",
+        "authors": "Veronica Roth",
+        "ratings_in_dataset": 99,
+        "goodreads_ratings_count": 1903563
+      },
+      {
+        "book_id": 14,
+        "title": "Animal Farm: A Fairy Story",
+        "authors": "George Orwell",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 1881700
+      },
+      {
+        "book_id": 18,
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "authors": "J.K. Rowling, Mary GrandPré, Rufus Beck",
+        "ratings_in_dataset": 100,
+        "goodreads_ratings_count": 1832823
+      }
+    ]
+  }
+}
